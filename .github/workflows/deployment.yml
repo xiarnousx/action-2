@@ -14,7 +14,8 @@ jobs:
         run: npm ci
       - name: Run Tests
         run: npm test
-  deploy: #  second job after test # jobs run in parllel
+  deploy: #  second job after test # jobs run in parllel by default
+    needs: test # dependency on test job you can have list of jobs [test, job2]
     runs-on: ubuntu-latest # every job has a runner
     steps:
       - name: Get Code
