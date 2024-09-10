@@ -1,0 +1,16 @@
+name: Test Project
+on: push # simple form of push
+jobs:
+  test: # first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install nodejs
+        uses: actions/setup-node@v3 # although the runner ubuntu-latest has it, however here we are practicing
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
